@@ -1,0 +1,23 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+image = cv2.imread("sample_grayscale_image.jpg", cv2.IMREAD_GRAYSCALE)
+
+histogram = np.zeros(256, dtype=int)
+
+height, width = image.shape
+
+for h in range(height):
+    for w in range(width):
+        pixel = image[h, w]
+        histogram[pixel] += 1
+
+for i in range(256):
+    print(f"Gri Seviye {i}: {histogram[i]}")
+
+# plt.bar(range(256), histogram)
+# plt.title("Gri Seviye Histogram")
+# plt.xlabel("Gri Seviyesi")
+# plt.ylabel("Frekans")
+# plt.show()
